@@ -1,0 +1,75 @@
+
+using System;
+using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
+using System.Linq;
+using System.IO;
+using System.Collections;
+using System.Collections.Generic;
+using AofC.Models;
+
+namespace AofC
+{
+    public class Day11Program
+    {
+
+        long count = 0;
+
+        public Day11Program()
+        {
+            string fileExample = "Day11Example.txt";
+            string filePuzzle = "Day11Input.txt";
+            //var fileName = fileExample;
+            var fileName = filePuzzle;
+            CreatePebblesList(fileName);
+            Day11Part1();
+        }
+
+
+        private List<long> PebblesAfterBlinks(long stone)
+        {
+            List<long> pebblesAfterBlink = new List<long>();
+            if (stone == 0)
+            {
+                pebblesAfterBlink.Add(1);
+                //Console.WriteLine($" 0 to 1");
+            }
+            else if (((stone).ToString().Length % 2) == 0)
+            {
+                //Console.WriteLine($" odd digits");
+                string digits = stone.ToString();
+                int length = digits.Length;
+                int half = length / 2;
+                string digitLeft = digits.Substring(0, half);
+                string digitright = digits.Substring(length - half);
+                // Console.WriteLine($"left {digitLeft} right{digitright}");
+                pebblesAfterBlink.Add(long.Parse(digitLeft));
+                pebblesAfterBlink.Add(long.Parse(digitright));
+
+            }
+            else
+            {
+                pebblesAfterBlink.Add(stone * 2024);
+                //Console.WriteLine($"  multiplied by 2024");
+            }
+
+            return pebblesAfterBlink;
+
+        }
+
+        private void aaCreatePebblesList(string fileName)
+        {
+
+            string lines = File.ReadAllText(fileName);
+            string RegPattern = @"(\d)+";
+            Console.WriteLine(lines);
+            foreach (Match match in Regex.Matches(lines, RegPattern))
+            {
+                pebbles.Add(Int32.Parse(match.Value));
+            }
+
+            return pebbles;
+        }
+
+    }
+}
