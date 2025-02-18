@@ -3,15 +3,15 @@
 # Advent of Code 2023: 15*
 - Letherboard: 
 - LeWagon
--   18) 1186 *************************  nakharinh
+-   18\) 1186 *************************  nakharinh
 - Endava Australia
--   4) 109 *************************  nakharinh
+-   4\) 109 *************************  nakharinh
 # Advent of Code 2024: 18*
 - Letherboard: 
 - LeWagon
--   9) 1660 *************************  nakharinh
+-   9\) 1660 *************************  nakharinh
 - Endava Australia
--   7)  74 *************************  nakharinh
+-   7\)  74 *************************  nakharinh
 
 
 <!--
