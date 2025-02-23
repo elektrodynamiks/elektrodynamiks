@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using AofC.Models;
+using AofC.Days;
 
 namespace AofC
 {
@@ -8,7 +9,7 @@ namespace AofC
     {
         static void Main(string[] args)
         {
-         new Day11Program();
+         new Day10Program();
         
         }
         
