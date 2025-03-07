@@ -55,7 +55,17 @@ namespace AofC.Models
 
         public char[][] CreateEmptyMap()
         {
-            return initializeMap();
+            var ordinate = mapSize[0];
+            var abscissa = mapSize[1];
+            char[][] jaggedArray = initializeMap();
+            for (int row = 0; row < ordinate; row++)
+            {
+                for (int col = 0; col < ordinate; col++)
+                {
+                    jaggedArray[row][col] = ' ';
+                }
+            }
+            return jaggedArray;
         }
 
         public char[][] initializeMap()
@@ -79,6 +89,7 @@ namespace AofC.Models
                 // inner for loop
                 for (int i = 0; i < jaggedArray[j].Length; i++)
                 {
+                   
                     Console.Write("[{0}]", jaggedArray[i][j]);
                 }
 
@@ -92,9 +103,9 @@ namespace AofC.Models
                     // inside the map
 
                     bool insideX = (0 <= abscissa && abscissa < mapSize[0]);
-                     bool insideY = (0 <= ordinate && ordinate < mapSize[1]);
+                    bool insideY = (0 <= ordinate && ordinate < mapSize[1]);
 
-                    Console.WriteLine("[{0},{1}] insideX:{2}", abscissa, ordinate, insideX && insideY);
+                    //Console.WriteLine("[{0},{1}] insideX:{2}", abscissa, ordinate, insideX && insideY);
                     return  insideX && insideY;
                 }
 
