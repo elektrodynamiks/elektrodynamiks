@@ -97,15 +97,15 @@ namespace AofC.Models
             }
         }
 
-         public bool inBounds(int abscissa, int ordinate)
+         public bool inBounds(int nextCol, int nextRow)
 
                 {
                     // inside the map
 
-                    bool insideX = (0 <= abscissa && abscissa < mapSize[0]);
-                    bool insideY = (0 <= ordinate && ordinate < mapSize[1]);
+                    bool insideX = (0 <= nextCol && nextCol < mapSize[0]);
+                    bool insideY = (0 <= nextRow && nextRow < mapSize[1]);
 
-                    //Console.WriteLine("[{0},{1}] insideX:{2}", abscissa, ordinate, insideX && insideY);
+                    //Console.WriteLine("[{0},{1}] insideX:{2}", nextCol, nextRow, insideX && insideY);
                     return  insideX && insideY;
                 }
 

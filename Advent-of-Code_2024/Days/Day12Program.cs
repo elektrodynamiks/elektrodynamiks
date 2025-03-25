@@ -33,6 +33,7 @@ namespace AofC
             GardenMap = myMap.map;
 
             Day12Part1();
+          
         }
 
         private void Day12Part1()
@@ -92,7 +93,7 @@ namespace AofC
                         if (plantType == gardenPlant)
                         {
                             areaMap[i][j] = plantType;
-                            regions.Add(new int[] { j, i });
+                            regions.Add(new int[] { i, j });
                             surface++;
                         }
                     }
@@ -102,15 +103,54 @@ namespace AofC
                 gardenPlantsSurface.TryAdd(plantType, regions);
             }
             // Make the island type for surface
-            var plant = 'R';
+            var plant = 'I';
             var type = gardenPlantTypes[plant];
-            var surfaceType = gardenPlantsSurface[plant];
+            var surfaceTypeList = gardenPlantsSurface[plant];
+            var surfaceTypeMap = PlantsSurface[plant];
             Console.WriteLine();
             myMap.PrintMapPlan(PlantsSurface[plant]);
-            foreach (var element in surfaceType)
+            
+            foreach (var element in surfaceTypeList)
             {
                 Console.Write($"[{element[0]},{element[1]}]");
+                
             }
+            Console.WriteLine();
+            var indexList = new List<int>(surfaceTypeList.Count);
+            for (int index = 0; index < surfaceTypeList.Count; index += 1)
+            {   
+                var element = surfaceTypeList[index];
+                //Console.Write($"[{element[0]},{element[1]}]");
+                // create a list
+                var newList = new List<int[]>();
+               
+                // add element touching to list
+                foreach (var prox in proximity)
+                {
+                    var nextCol = element[0] + prox[0];
+                    var nextRow = element[1] + prox[1];
+                    if (myMap.inBounds(nextCol, nextRow))
+                    {
+                        if (surfaceTypeMap[nextCol][nextRow] == plant)
+                        {
+                            Console.Write($"[{nextCol},{nextRow}]");
+                            Console.Write($"{surfaceTypeMap[nextCol][nextRow]}");
+                            Console.WriteLine();
+                            newList.Add(element);
+                            //indexList.Add(index);
+                            //break;
+                            //surfaceTypeList.RemoveAt(index);
+                        }
+                       
+                    }
+                }
+            
+                    
+            }
+           
+           
+           
+            
             //gardenPlantsAera[plantType] = surface;
             //isItAnIslandRegion(plantType);
             //gardenPlantsPerimeter[plantType] = CalculatePerimeterOfPlant(plantType);
